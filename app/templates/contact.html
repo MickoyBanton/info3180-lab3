@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h2>Contact Us</h2>
+    <p>Fill in this form to get in touch with us.</p>
+
+    <form method="post" action="{{ url_for('contact') }}" novalidate>
+        {{ form.csrf_token }}  {# CSRF protection #}
+
+        <div class="form-group mb-3">
+            {{ form.name.label(class="form-label") }}
+            <p>Please enter your full name</p>
+            {{ form.name(class="form-control") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.email.label(class="form-label") }}
+            <p>Please enter your e-mail address</p>
+            {{ form.email(class="form-control") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.subject.label(class="form-label") }}
+            <p>Please enter the subject of your message</p>
+            {{ form.subject(class="form-control") }}
+        </div>
+
+        <div class="form-group mb-3">
+            {{ form.message.label(class="form-label") }}
+            <p>Pleas enter the message you would like to send</p>
+            {{ form.message(class="form-control", rows="4") }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+{% endblock %}
